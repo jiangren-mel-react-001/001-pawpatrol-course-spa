@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   Navbar, NavItem, Nav
 } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 export default () => (
   <Navbar inverse collapseOnSelect>
@@ -14,20 +15,12 @@ export default () => (
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav>
-        <NavItem eventKey={1}>
-          <Link to="/course">Courses</Link>
-        </NavItem>
-        <NavItem eventKey={2}>
-          <Link to="/teacher">Teachers</Link>
-        </NavItem>
-      </Nav>
-      <Nav pullRight>
-        <NavItem eventKey={1}>
-          <Link to="/course">Courses</Link>
-        </NavItem>
-        <NavItem eventKey={2}>
-          <Link to="/teacher">Teachers</Link>
-        </NavItem>
+          <LinkContainer to="/course">
+            <NavItem>Courses</NavItem>
+          </LinkContainer>
+          <LinkContainer to="/teacher">
+            <NavItem>Teachers</NavItem>
+          </LinkContainer>
       </Nav>
     </Navbar.Collapse>
   </Navbar>
