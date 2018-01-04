@@ -45,7 +45,7 @@ export default class CourseEdit extends React.Component {
                         onChange={this.onInputChange}
                     />
                 </div>
-                <button type="submit" className="btn btn-secondary">Submit</button>
+                <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         );
     };

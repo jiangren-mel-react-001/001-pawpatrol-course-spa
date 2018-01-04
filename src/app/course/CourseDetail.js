@@ -17,7 +17,7 @@ export default class CourseDetail extends React.Component {
             <div className="container">
                 <h2>{this.props.detail.name}</h2>
                 <p>{this.props.detail.description}</p>
-                <Link className="btn btn-secondary" to={{
+                <Link className="btn btn-primary" to={{
                     pathname: '/course/edit',
                     state: { detail: this.props.detail }
                 }}>
