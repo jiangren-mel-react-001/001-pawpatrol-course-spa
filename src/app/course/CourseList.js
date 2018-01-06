@@ -3,20 +3,27 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import CourseItem from './CourseItem';
+import LoadingStatus from '../shared/LoadingStatus';
 
 export default class CourseList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            loading: false,
             courses: []
         };
     }
 
     componentWillMount() {
+        this.setState({loading: true});
         axios.get('https://jr-001-pawpatrol-course-api.herokuapp.com/api/courses')
             .then((response) => this.setState({
+                loading: false,
                 courses: response.data
-            }));
+            })).catch(error => {
+                this.setState({loading: false});
+                throw(error);
+            });
     }
 
     onClickDetail = (aCourse) => {
@@ -44,6 +51,7 @@ export default class CourseList extends React.Component {
                 </div>
                 <div className="row">
                     <Link className="btn btn-primary" to="/course/create">Add a new course</Link>
+                    <LoadingStatus loading={this.state.loading} />
                 </div>
                 <div className="row">
                     {courses}
