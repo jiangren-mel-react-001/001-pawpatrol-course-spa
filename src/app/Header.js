@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import {
   Navbar, NavItem, Nav
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-export default () => (
+export default withRouter(({token, onTokenChanged, history}) => (
   <Navbar inverse collapseOnSelect>
     <Navbar.Header>
       <Navbar.Brand>
@@ -22,6 +22,20 @@ export default () => (
             <NavItem>Teachers</NavItem>
           </LinkContainer>
       </Nav>
+			<Nav pullRight>
+        {token ? (
+          <NavItem onClick={() => {
+            onTokenChanged('');
+            history.push('/');
+          }}>
+            Logout
+          </NavItem>
+        ) : (
+          <LinkContainer to="/login">
+            <NavItem>Login</NavItem>
+          </LinkContainer>
+        )}
+			</Nav>
     </Navbar.Collapse>
   </Navbar>
-);
+));

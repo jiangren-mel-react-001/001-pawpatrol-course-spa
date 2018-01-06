@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 
 export default class CourseCreate extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             name: '',
             description: ''

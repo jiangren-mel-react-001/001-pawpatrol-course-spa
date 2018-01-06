@@ -13,19 +13,24 @@ export default class CourseDetail extends React.Component {
             .catch(err => console.log(err));
     }
     render() {
+        const { token } = this.props;
         return(
             <div className="container">
                 <h2>{this.props.detail.name}</h2>
                 <p>{this.props.detail.description}</p>
-                <Link className="btn btn-primary" to={{
-                    pathname: '/course/edit',
-                    state: { detail: this.props.detail }
-                }}>
-                    Edit
-                </Link>
-                <button className="btn btn-danger" onClick={this.onDelete}>
-                    Delete
-                </button>
+                { token && (
+                    <div>
+                    <Link className="btn btn-primary" to={{
+                        pathname: '/course/edit',
+                        state: { detail: this.props.detail }
+                    }}>
+                        Edit
+                    </Link>
+                    <button className="btn btn-danger" onClick={this.onDelete}>
+                        Delete
+                    </button>
+                    </div>
+                )}
             </div>
         );
     }
